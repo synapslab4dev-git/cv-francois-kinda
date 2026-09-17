@@ -90,7 +90,7 @@ export default function FullCvView({ flashcards, theme = 'dark' }) {
             <div className="space-y-3 pt-1">
               {card.sections.map((sec, sIdx) => (
                 <div key={sIdx} className={`rounded-xl p-3.5 border ${
-                  isDark ? 'bg-slate-800/30 border-slate-750' : 'bg-slate-50 border-slate-200'
+                  isDark ? 'bg-slate-800/30 border-slate-700' : 'bg-slate-50 border-slate-200'
                 }`}>
                   <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
                     isDark ? 'text-[#FF7900]' : 'text-[#d96700]'

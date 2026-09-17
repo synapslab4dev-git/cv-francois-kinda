@@ -16,6 +16,22 @@ export default function FlashcardModal({
   const prevCard = currentIndex > 0 ? allCards[currentIndex - 1] : null;
   const nextCard = currentIndex < allCards.length - 1 ? allCards[currentIndex + 1] : null;
 
+  const [touchStartY, setTouchStartY] = React.useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchStartY(e.touches[0].clientY);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartY !== null) {
+      const touchEndY = e.changedTouches[0].clientY;
+      if (touchEndY - touchStartY > 60) {
+        onClose();
+      }
+      setTouchStartY(null);
+    }
+  };
+
   // Prevent background body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -43,19 +59,29 @@ export default function FlashcardModal({
       <div 
         className={`relative z-10 w-full sm:max-w-xl max-h-[92vh] sm:max-h-[85vh] rounded-t-2xl sm:rounded-2xl shadow-xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-200 border transition-colors ${
           isDark 
-            ? 'bg-slate-900 border-slate-750 text-slate-100' 
+            ? 'bg-slate-900 border-slate-700 text-slate-100' 
             : 'bg-white border-slate-200 text-slate-900 shadow-2xl'
         }`}
       >
-        {/* Mobile Pull Bar Indicator */}
-        <div className={`sm:hidden w-10 h-1 rounded-full mx-auto mt-2.5 mb-1 ${
-          isDark ? 'bg-slate-700' : 'bg-slate-300'
-        }`} />
+        {/* Mobile Pull Bar Indicator with Touch Drag-Down to Close */}
+        <div 
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="sm:hidden pt-2.5 pb-1 cursor-grab active:cursor-grabbing select-none"
+        >
+          <div className={`w-12 h-1.5 rounded-full mx-auto ${
+            isDark ? 'bg-slate-700' : 'bg-slate-300'
+          }`} />
+        </div>
 
-        {/* Modal Top Header */}
-        <div className={`px-5 py-3 border-b flex items-center justify-between gap-3 ${
-          isDark ? 'bg-slate-900 border-slate-800' : 'bg-slate-50/80 border-slate-100'
-        }`}>
+        {/* Modal Top Header with Swipe Support */}
+        <div 
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className={`px-5 py-3 border-b flex items-center justify-between gap-3 select-none ${
+            isDark ? 'bg-slate-900 border-slate-800' : 'bg-slate-50/80 border-slate-100'
+          }`}
+        >
           <div className="flex items-center gap-2 min-w-0">
             <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold ${
               isDark 
@@ -75,7 +101,7 @@ export default function FlashcardModal({
             onClick={onClose}
             className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
               isDark 
-                ? 'text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-750 border-slate-700' 
+                ? 'text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 border-slate-700' 
                 : 'text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border-slate-200'
             }`}
             title="Fermer"
@@ -151,7 +177,7 @@ export default function FlashcardModal({
             <div className="space-y-3">
               {card.sections.map((sec, idx) => (
                 <div key={idx} className={`rounded-xl p-3.5 border ${
-                  isDark ? 'bg-slate-800/30 border-slate-750' : 'bg-slate-50 border-slate-200'
+                  isDark ? 'bg-slate-800/30 border-slate-700' : 'bg-slate-50 border-slate-200'
                 }`}>
                   <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2.5 flex items-center gap-1.5 ${
                     isDark ? 'text-[#FF7900]' : 'text-[#d96700]'
@@ -162,7 +188,7 @@ export default function FlashcardModal({
                   <div className="space-y-2.5">
                     {sec.items.map((item, iIdx) => (
                       <div key={iIdx} className={`border-l-2 pl-3 ${
-                        isDark ? 'border-slate-750' : 'border-slate-200'
+                        isDark ? 'border-slate-700' : 'border-slate-200'
                       }`}>
                         <div className={`text-xs font-semibold ${
                           isDark ? 'text-white' : 'text-slate-900'
@@ -291,7 +317,7 @@ export default function FlashcardModal({
           {card.actions && (
             <div className="space-y-3">
               <div className={`rounded-xl p-3.5 border ${
-                isDark ? 'bg-slate-800/30 border-slate-750' : 'bg-slate-50 border-slate-200'
+                isDark ? 'bg-slate-800/30 border-slate-700' : 'bg-slate-50 border-slate-200'
               }`}>
                 <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
                   isDark ? 'text-[#FF7900]' : 'text-[#d96700]'
@@ -374,7 +400,7 @@ export default function FlashcardModal({
                     )}
                   </div>
                   <ul className={`space-y-1.5 text-xs pt-1 border-t ${
-                    isDark ? 'border-slate-750 text-slate-300' : 'border-slate-200/80 text-slate-600'
+                    isDark ? 'border-slate-700 text-slate-300' : 'border-slate-200/80 text-slate-600'
                   }`}>
                     {prog.focus.map((f, fIdx) => (
                       <li key={fIdx} className="flex items-start gap-2">
@@ -407,7 +433,7 @@ export default function FlashcardModal({
               </div>
 
               <div className={`rounded-xl p-3.5 border ${
-                isDark ? 'bg-slate-800/30 border-slate-750' : 'bg-slate-50 border-slate-200'
+                isDark ? 'bg-slate-800/30 border-slate-700' : 'bg-slate-50 border-slate-200'
               }`}>
                 <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
                   isDark ? 'text-slate-300' : 'text-slate-700'
@@ -462,7 +488,7 @@ export default function FlashcardModal({
             className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               prevCard 
                 ? isDark 
-                  ? 'bg-slate-800 text-slate-200 hover:bg-slate-750 active:scale-95 border border-slate-700 cursor-pointer' 
+                  ? 'bg-slate-800 text-slate-200 hover:bg-slate-700 active:scale-95 border border-slate-700 cursor-pointer' 
                   : 'bg-white text-slate-700 hover:bg-slate-100 active:scale-95 border border-slate-200 cursor-pointer shadow-2xs'
                 : 'text-slate-400 bg-transparent border border-transparent cursor-not-allowed opacity-40'
             }`}

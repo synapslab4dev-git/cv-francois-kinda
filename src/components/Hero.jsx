@@ -11,7 +11,8 @@ import {
   ExternalLink, 
   FolderArchive,
   Sun,
-  Moon
+  Moon,
+  Sparkles
 } from 'lucide-react';
 
 function LinkedinIcon({ className = "w-3.5 h-3.5" }) {
@@ -88,15 +89,30 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
         </div>
       </div>
 
-      {/* Main Profile Card (Sober Dark/Light + Single Orange Telecom Accent #FF7900) */}
+      {/* Main Profile Card */}
       <div className={`rounded-2xl p-4 sm:p-5 border transition-colors ${
         isDark 
           ? 'bg-slate-800/60 border-slate-700/60 shadow-sm' 
           : 'bg-white border-slate-200/90 shadow-xs'
       }`}>
+        
+        {/* Targeted Candidacy Badge for CIDS / Dynamique Agro */}
+        {personal.targetCandidacy && (
+          <div className="mb-3.5">
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-xl text-[11px] sm:text-xs font-semibold border ${
+              isDark 
+                ? 'bg-[#FF7900]/10 text-[#FF7900] border-[#FF7900]/30' 
+                : 'bg-orange-50 text-[#d96700] border-orange-200 shadow-2xs'
+            }`}>
+              <span className="w-2 h-2 rounded-full bg-[#FF7900] animate-pulse shrink-0" />
+              <span>{personal.targetCandidacy}</span>
+            </div>
+          </div>
+        )}
+
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
           
-          {/* Avatar with subtle border and orange presence dot */}
+          {/* Avatar with subtle border and presence dot */}
           <div className="relative shrink-0">
             <div className={`w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border shadow-sm ${
               isDark ? 'border-slate-600/80 bg-slate-800' : 'border-slate-200 bg-slate-100'
@@ -125,12 +141,12 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
               {personal.fullName}
             </h1>
             
-            <p className={`text-sm sm:text-base font-medium mt-0.5 ${
-              isDark ? 'text-slate-200' : 'text-slate-700 font-semibold'
+            <p className={`text-sm sm:text-base font-semibold mt-0.5 ${
+              isDark ? 'text-slate-200' : 'text-slate-800'
             }`}>
               {personal.title}
             </p>
-            <p className={`text-xs sm:text-sm font-normal ${
+            <p className={`text-xs sm:text-sm font-normal mt-0.5 ${
               isDark ? 'text-slate-400' : 'text-slate-500'
             }`}>
               {personal.subtitle}
@@ -167,22 +183,10 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
           </a>
 
           <a
-            href={`tel:${personal.phone.replace(/\s+/g, '')}`}
-            className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
-              isDark 
-                ? 'bg-slate-800 hover:bg-slate-750 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
-                : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200 hover:border-[#FF7900]/50 shadow-2xs'
-            }`}
-          >
-            <Phone className="w-3.5 h-3.5 text-[#FF7900] shrink-0" />
-            <span>Appeler</span>
-          </a>
-
-          <a
             href={`mailto:${personal.email}`}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
               isDark 
-                ? 'bg-slate-800 hover:bg-slate-750 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
+                ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200 hover:border-[#FF7900]/50 shadow-2xs'
             }`}
           >
@@ -191,12 +195,24 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
           </a>
 
           <a
+            href={`tel:${personal.phone.replace(/\s+/g, '')}`}
+            className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
+              isDark 
+                ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
+                : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200 hover:border-[#FF7900]/50 shadow-2xs'
+            }`}
+          >
+            <Phone className="w-3.5 h-3.5 text-[#FF7900] shrink-0" />
+            <span>Appeler</span>
+          </a>
+
+          <a
             href={personal.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
               isDark 
-                ? 'bg-slate-800 hover:bg-slate-750 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
+                ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200 hover:border-[#FF7900]/50 shadow-2xs'
             }`}
           >
@@ -206,7 +222,7 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
         </div>
       </div>
 
-      {/* Positionnement Professionnel */}
+      {/* Positionnement Professionnel — Puces Percutantes */}
       <div className={`mt-3 rounded-2xl p-4 border transition-colors ${
         isDark 
           ? 'bg-slate-800/40 border-slate-700/50' 
@@ -218,13 +234,47 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF7900]"></span>
           {positioning.title}
         </h2>
-        <p className={`text-xs sm:text-sm leading-relaxed font-normal ${
-          isDark ? 'text-slate-300' : 'text-slate-600'
-        }`}>
-          {positioning.summary}
-        </p>
 
-        {/* 4 Clean Sober Key Metrics Strip */}
+        {positioning.headline && (
+          <p className={`text-xs sm:text-sm leading-relaxed mb-2.5 font-medium ${
+            isDark ? 'text-slate-200' : 'text-slate-800'
+          }`}>
+            {positioning.headline}
+          </p>
+        )}
+
+        {positioning.points ? (
+          <ul className="space-y-2 mb-1">
+            {positioning.points.map((pt, idx) => {
+              const parts = pt.split(/(\*\*.*?\*\*)/g);
+              return (
+                <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF7900] mt-2 shrink-0" />
+                  <span className={isDark ? "text-slate-300" : "text-slate-600"}>
+                    {parts.map((part, pIdx) => {
+                      if (part.startsWith('**') && part.endsWith('**')) {
+                        return (
+                          <strong key={pIdx} className={isDark ? "text-white font-semibold" : "text-slate-900 font-semibold"}>
+                            {part.slice(2, -2)}
+                          </strong>
+                        );
+                      }
+                      return part;
+                    })}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p className={`text-xs sm:text-sm leading-relaxed font-normal ${
+            isDark ? 'text-slate-300' : 'text-slate-600'
+          }`}>
+            {positioning.summary}
+          </p>
+        )}
+
+        {/* 4 Key Metrics Strip */}
         <div className={`grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t text-center ${
           isDark ? 'border-slate-700/50' : 'border-slate-100'
         }`}>
@@ -245,43 +295,55 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
         </div>
       </div>
 
-      {/* Discreet Portfolio Invite Banner */}
+      {/* Enhanced Portfolio Preview Banner */}
       {personal.portfolioUrl && (
         <a
           href={personal.portfolioUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`mt-3 flex items-center justify-between gap-3 p-3 rounded-2xl border transition-all group active:scale-[0.99] ${
+          className={`mt-3 flex items-center justify-between gap-3 p-3.5 rounded-2xl border transition-all group active:scale-[0.99] ${
             isDark 
               ? 'bg-slate-800/50 hover:bg-slate-800 border-slate-700/60 hover:border-[#FF7900]/50' 
               : 'bg-white hover:bg-slate-50 border-slate-200 hover:border-[#FF7900]/50 shadow-xs'
           }`}
         >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className={`p-2 rounded-xl border text-[#FF7900] shrink-0 transition-colors ${
+          <div className="flex items-center gap-3 min-w-0">
+            <div className={`p-2.5 rounded-xl border text-[#FF7900] shrink-0 transition-colors ${
               isDark 
                 ? 'bg-slate-800 border-slate-700 group-hover:bg-[#FF7900]/10' 
                 : 'bg-orange-50 border-orange-200/60 group-hover:bg-orange-100/60'
             }`}>
-              <FolderArchive className="w-4 h-4" />
+              <FolderArchive className="w-5 h-5" />
             </div>
             <div className="min-w-0">
-              <div className={`text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-                isDark ? 'text-slate-200 group-hover:text-[#FF7900]' : 'text-slate-800 group-hover:text-[#d96700]'
-              }`}>
-                <span>{personal.portfolioTitle}</span>
+              <div className="flex items-center gap-2">
+                <span className={`text-xs sm:text-sm font-bold transition-colors ${
+                  isDark ? 'text-slate-200 group-hover:text-[#FF7900]' : 'text-slate-800 group-hover:text-[#d96700]'
+                }`}>
+                  {personal.portfolioTitle}
+                </span>
+                {personal.portfolioBadge && (
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${
+                    isDark 
+                      ? 'bg-[#FF7900]/10 text-[#FF7900] border-[#FF7900]/25' 
+                      : 'bg-[#FF7900]/10 text-[#d96700] border-[#FF7900]/30'
+                  }`}>
+                    {personal.portfolioBadge}
+                  </span>
+                )}
               </div>
-              <p className={`text-[11px] truncate ${
+              <p className={`text-[11px] truncate mt-0.5 ${
                 isDark ? 'text-slate-400' : 'text-slate-500'
               }`}>
                 {personal.portfolioSubtitle}
               </p>
             </div>
           </div>
-          <div className={`transition-colors shrink-0 pr-1 ${
+          <div className={`flex items-center gap-1 text-xs font-semibold shrink-0 pr-1 transition-colors ${
             isDark ? 'text-slate-400 group-hover:text-[#FF7900]' : 'text-slate-400 group-hover:text-[#d96700]'
           }`}>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline text-[11px]">Consulter</span>
+            <ExternalLink className="w-4 h-4" />
           </div>
         </a>
       )}

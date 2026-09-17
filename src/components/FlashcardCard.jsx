@@ -71,7 +71,8 @@ export default function FlashcardCard({ card, index, onSelect, theme = 'dark' })
             }`}>
               {card.title}
             </h4>
-            <p className={`text-xs mt-0.5 line-clamp-1 font-normal ${
+            {/* Display full subtitle without aggressive truncation so dates and locations are visible */}
+            <p className={`text-xs mt-0.5 leading-normal font-normal ${
               isDark ? 'text-slate-400' : 'text-slate-500'
             }`}>
               {card.subtitle}
@@ -96,7 +97,7 @@ export default function FlashcardCard({ card, index, onSelect, theme = 'dark' })
         <span>Consulter la fiche</span>
         <div className={`w-5 h-5 rounded-full flex items-center justify-center transition-all ${
           isDark 
-            ? 'bg-slate-800 text-slate-400 group-hover:text-[#FF7900] group-hover:bg-slate-750' 
+            ? 'bg-slate-800 text-slate-400 group-hover:text-[#FF7900] group-hover:bg-slate-700' 
             : 'bg-slate-100 text-slate-500 group-hover:text-[#d96700] group-hover:bg-orange-50'
         }`}>
           <ChevronRight className="w-3.5 h-3.5" />

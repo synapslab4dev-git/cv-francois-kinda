@@ -169,12 +169,12 @@ export default function App() {
       </main>
 
       {/* Footer Branding */}
-      <footer className={`w-full max-w-2xl mx-auto px-4 pb-20 sm:pb-8 text-center text-xs space-y-1 ${
+      <footer className={`w-full max-w-2xl mx-auto px-4 pb-24 sm:pb-8 text-center text-xs space-y-1 ${
         isDark ? 'text-slate-500' : 'text-slate-500'
       }`}>
-        <p>© 2026 {cvData.personal.fullName}</p>
-        <p className={`text-[11px] ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>
-          CV interactif mobile-first
+        <p className="font-semibold">© 2026 {cvData.personal.fullName} • {cvData.personal.location}</p>
+        <p className={`text-[11px] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>
+          {cvData.personal.phone} • {cvData.personal.email}
         </p>
       </footer>
 
