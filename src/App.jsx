@@ -6,6 +6,12 @@ import FlashcardModal from './components/FlashcardModal';
 import FullCvView from './components/FullCvView';
 import QuickActionBar from './components/QuickActionBar';
 import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
+import { 
+  trackCategoryChange, 
+  trackShareClick, 
+  trackViewModeChange, 
+  trackThemeChange 
+} from './utils/analytics';
 
 export default function App() {
   const [viewMode, setViewMode] = useState('flashcards'); // 'flashcards' | 'full'
@@ -35,7 +41,21 @@ export default function App() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      trackThemeChange(next);
+      return next;
+    });
+  };
+
+  const handleSelectCategory = (catId) => {
+    setSelectedCategory(catId);
+    trackCategoryChange(catId);
+  };
+
+  const handleViewModeChange = (mode) => {
+    setViewMode(mode);
+    trackViewModeChange(mode);
   };
 
   const categories = [
@@ -86,6 +106,7 @@ export default function App() {
   };
 
   const handleShare = async () => {
+    trackShareClick();
     const shareData = {
       title: `${cvData.personal.fullName} — CV Mobile Interactif`,
       text: `${cvData.personal.fullName} • ${cvData.personal.title} — ${cvData.personal.subtitle}`,
@@ -133,7 +154,7 @@ export default function App() {
           personal={cvData.personal}
           positioning={cvData.positioning}
           viewMode={viewMode}
-          setViewMode={setViewMode}
+          setViewMode={handleViewModeChange}
           onShare={handleShare}
           theme={theme}
           onToggleTheme={toggleTheme}
@@ -148,7 +169,7 @@ export default function App() {
               {categories.map((cat) => (
                 <button
                   key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => handleSelectCategory(cat.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
                     selectedCategory === cat.id
                       ? 'bg-[#FF7900] text-slate-950 font-bold shadow-xs'
@@ -181,7 +202,7 @@ export default function App() {
                 {navigationMap[selectedCategory].prev ? (
                   <button
                     onClick={() => {
-                      setSelectedCategory(navigationMap[selectedCategory].prev.id);
+                      handleSelectCategory(navigationMap[selectedCategory].prev.id);
                       const el = document.getElementById('flashcards-section');
                       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }}
@@ -199,7 +220,7 @@ export default function App() {
                 {navigationMap[selectedCategory].next ? (
                   <button
                     onClick={() => {
-                      setSelectedCategory(navigationMap[selectedCategory].next.id);
+                      handleSelectCategory(navigationMap[selectedCategory].next.id);
                       const el = document.getElementById('flashcards-section');
                       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }}

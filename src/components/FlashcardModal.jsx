@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import CardIcon from './CardIcon';
 import { X, ChevronLeft, ChevronRight, CheckCircle, Info } from 'lucide-react';
+import { trackCardOpen, trackCardClose } from '../utils/analytics';
 
 export default function FlashcardModal({ 
   card, 
@@ -31,6 +32,23 @@ export default function FlashcardModal({
       setTouchStartY(null);
     }
   };
+
+  // Track card open & reading duration
+  const currentCardRef = useRef(card);
+  const openTimeRef = useRef(Date.now());
+
+  useEffect(() => {
+    currentCardRef.current = card;
+    openTimeRef.current = Date.now();
+    trackCardOpen(card);
+
+    return () => {
+      if (currentCardRef.current) {
+        const duration = Math.round((Date.now() - openTimeRef.current) / 1000);
+        trackCardClose(currentCardRef.current, duration);
+      }
+    };
+  }, [card?.id]);
 
   // Prevent background body scroll when modal is open
   useEffect(() => {

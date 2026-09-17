@@ -14,6 +14,7 @@ import {
   Moon,
   Sparkles
 } from 'lucide-react';
+import { trackContactClick, trackPortfolioClick } from '../utils/analytics';
 
 function LinkedinIcon({ className = "w-3.5 h-3.5" }) {
   return (
@@ -176,6 +177,7 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
             href={personal.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackContactClick('whatsapp', 'hero')}
             className="flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-medium text-xs transition-all active:scale-95"
           >
             <MessageCircle className="w-3.5 h-3.5 fill-white shrink-0" />
@@ -184,6 +186,7 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
 
           <a
             href={`mailto:${personal.email}`}
+            onClick={() => trackContactClick('email', 'hero')}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
               isDark 
                 ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
@@ -196,6 +199,7 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
 
           <a
             href={`tel:${personal.phone.replace(/\s+/g, '')}`}
+            onClick={() => trackContactClick('phone', 'hero')}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
               isDark 
                 ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
@@ -210,6 +214,7 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
             href={personal.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackContactClick('linkedin', 'hero')}
             className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-medium text-xs border transition-all active:scale-95 ${
               isDark 
                 ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 hover:border-[#FF7900]/50' 
@@ -301,6 +306,7 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
           href={personal.portfolioUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackPortfolioClick()}
           className={`mt-3 flex items-center justify-between gap-3 p-3.5 rounded-2xl border transition-all group active:scale-[0.99] ${
             isDark 
               ? 'bg-slate-800/50 hover:bg-slate-800 border-slate-700/60 hover:border-[#FF7900]/50' 
