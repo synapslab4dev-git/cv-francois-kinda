@@ -15,7 +15,10 @@ export const cvData = {
     degreeShort: "Master MEO 2iE",
     portfolioUrl: "https://drive.google.com/file/d/165SBkmr9GzK5w4Wz0OrXmc95agpIewAD/view?usp=sharing",
     portfolioTitle: "Échantillon de réalisations (PDF)",
-    portfolioSubtitle: "Sélection de cas de marques, packagings & déploiements digitaux"
+    portfolioSubtitle: "Sélection de cas de marques, packagings & déploiements digitaux",
+    demoUrl: "https://dynamic-agro.synaps-lab4dev.com/",
+    demoTitle: "Plateforme de Démonstration (CRM)",
+    demoSubtitle: "Interface sur-mesure conçue pour Dynamic Agro"
   },
   positioning: {
     title: "Positionnement Professionnel",

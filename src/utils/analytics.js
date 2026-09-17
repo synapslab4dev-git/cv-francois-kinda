@@ -186,6 +186,20 @@ export function trackShareClick() {
 }
 
 /**
+ * Track Demo Platform clicks
+ */
+export function trackDemoClick() {
+  sendGAEvent('view_demo_platform', {
+    content_type: 'crm_demo_link',
+    event_category: 'conversion',
+  });
+
+  notifyHighIntent('Consultation Plateforme Démo', {
+    action: 'Clic sur le lien de démonstration Dynamic Agro',
+  });
+}
+
+/**
  * 7. Track View Mode Switcher ('flashcards' vs 'full')
  */
 export function trackViewModeChange(mode) {

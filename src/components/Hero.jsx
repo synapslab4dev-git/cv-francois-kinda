@@ -12,9 +12,10 @@ import {
   FolderArchive,
   Sun,
   Moon,
-  Sparkles
+  Sparkles,
+  MonitorPlay
 } from 'lucide-react';
-import { trackContactClick, trackPortfolioClick } from '../utils/analytics';
+import { trackContactClick, trackPortfolioClick, trackDemoClick } from '../utils/analytics';
 
 function LinkedinIcon({ className = "w-3.5 h-3.5" }) {
   return (
@@ -340,6 +341,51 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
             isDark ? 'text-slate-400 group-hover:text-[#FF7900]' : 'text-slate-400 group-hover:text-[#d96700]'
           }`}>
             <span className="hidden sm:inline text-[11px]">Consulter</span>
+            <ExternalLink className="w-4 h-4" />
+          </div>
+        </a>
+      )}
+
+      {/* Demo Platform Banner */}
+      {personal.demoUrl && (
+        <a
+          href={personal.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackDemoClick()}
+          className={`mt-2.5 flex items-center justify-between gap-3 p-3.5 rounded-2xl border transition-all group active:scale-[0.99] ${
+            isDark 
+              ? 'bg-emerald-900/10 hover:bg-emerald-900/20 border-emerald-800/40 hover:border-emerald-500/50' 
+              : 'bg-emerald-50 hover:bg-emerald-100 border-emerald-200 hover:border-emerald-500/50 shadow-xs'
+          }`}
+        >
+          <div className="flex items-center gap-3 min-w-0">
+            <div className={`p-2.5 rounded-xl border text-emerald-600 shrink-0 transition-colors ${
+              isDark 
+                ? 'bg-slate-800 border-emerald-800/40 group-hover:bg-emerald-900/30' 
+                : 'bg-white border-emerald-200 group-hover:bg-white'
+            }`}>
+              <MonitorPlay className="w-5 h-5" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span className={`text-xs sm:text-sm font-bold transition-colors ${
+                  isDark ? 'text-slate-200 group-hover:text-emerald-400' : 'text-slate-800 group-hover:text-emerald-700'
+                }`}>
+                  {personal.demoTitle}
+                </span>
+              </div>
+              <p className={`text-[11px] truncate mt-0.5 ${
+                isDark ? 'text-slate-400' : 'text-slate-500'
+              }`}>
+                {personal.demoSubtitle}
+              </p>
+            </div>
+          </div>
+          <div className={`flex items-center gap-1 text-xs font-semibold shrink-0 pr-1 transition-colors ${
+            isDark ? 'text-slate-400 group-hover:text-emerald-400' : 'text-slate-400 group-hover:text-emerald-700'
+          }`}>
+            <span className="hidden sm:inline text-[11px]">Explorer</span>
             <ExternalLink className="w-4 h-4" />
           </div>
         </a>
