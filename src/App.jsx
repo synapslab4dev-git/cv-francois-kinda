@@ -107,9 +107,13 @@ export default function App() {
 
   const handleShare = async () => {
     trackShareClick();
+    
+    const customText = `François KINDA - CV pour le poste de Responsable Marketing, Croissance & Relation Client`;
+    const fullShareText = `${customText}\n\n${window.location.href}`;
+
     const shareData = {
-      title: `${cvData.personal.fullName} — CV Mobile Interactif`,
-      text: `${cvData.personal.fullName} • ${cvData.personal.title} — ${cvData.personal.subtitle}`,
+      title: `CV François KINDA`,
+      text: `${customText}\n\n`,
       url: window.location.href,
     };
 
@@ -117,15 +121,15 @@ export default function App() {
       try {
         await navigator.share(shareData);
       } catch (err) {
-        copyToClipboard();
+        copyToClipboard(fullShareText);
       }
     } else {
-      copyToClipboard();
+      copyToClipboard(fullShareText);
     }
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
+  const copyToClipboard = (textToCopy) => {
+    navigator.clipboard.writeText(textToCopy || window.location.href);
     showToast("Lien copié dans le presse-papiers !");
   };
 
