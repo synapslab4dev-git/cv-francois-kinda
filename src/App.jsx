@@ -227,7 +227,7 @@ export default function App() {
         {selectedCard && (
           <FlashcardModal
             card={selectedCard}
-            allCards={cvData.flashcards}
+            allCards={filteredCards}
             theme={theme}
             onClose={() => setSelectedCard(null)}
             onNavigate={(newCard) => setSelectedCard(newCard)}

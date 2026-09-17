@@ -82,18 +82,24 @@ export default function FlashcardModal({
             isDark ? 'bg-slate-900 border-slate-800' : 'bg-slate-50/80 border-slate-100'
           }`}
         >
-          <div className="flex items-center gap-2 min-w-0">
-            <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold ${
+          <div className="flex items-center gap-1.5 min-w-0 flex-wrap">
+            <span className={`text-[11px] font-bold uppercase tracking-wider ${
+              isDark ? 'text-slate-400' : 'text-slate-500'
+            }`}>
+              {card.category}
+            </span>
+            <span className={isDark ? 'text-slate-600' : 'text-slate-300'}>›</span>
+            <span className={`px-2 py-0.5 rounded-md text-[11px] font-semibold shrink-0 ${
               isDark 
                 ? 'bg-[#FF7900]/10 text-[#FF7900] border border-[#FF7900]/25' 
                 : 'bg-[#FF7900]/10 text-[#d96700] border border-[#FF7900]/30'
             }`}>
               {card.badge}
             </span>
-            <span className={`text-xs font-mono ${
+            <span className={`text-[11px] font-mono font-medium ml-1 shrink-0 ${
               isDark ? 'text-slate-400' : 'text-slate-500'
             }`}>
-              Fiche {currentIndex + 1} / {allCards.length}
+              {currentIndex + 1}/{allCards.length}
             </span>
           </div>
 
