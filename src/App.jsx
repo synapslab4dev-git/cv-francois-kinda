@@ -5,12 +5,12 @@ import FlashcardCard from './components/FlashcardCard';
 import FlashcardModal from './components/FlashcardModal';
 import FullCvView from './components/FullCvView';
 import QuickActionBar from './components/QuickActionBar';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 export default function App() {
   const [viewMode, setViewMode] = useState('flashcards'); // 'flashcards' | 'full'
   const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('Expertise');
   const [toastMessage, setToastMessage] = useState(null);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -39,13 +39,21 @@ export default function App() {
   };
 
   const categories = [
-    { id: 'all', label: 'Toutes les fiches' },
     { id: 'Expertise', label: 'Expertises' },
     { id: 'Expérience', label: 'Expériences' },
     { id: 'Cas d\'étude', label: 'Cas d\'étude' },
     { id: 'Formation', label: 'Formation' },
     { id: 'Boîte à Outils', label: 'Outils' },
+    { id: 'all', label: 'Toutes les fiches' },
   ];
+
+  const nextCategoryMap = {
+    'Expertise': { id: 'Expérience', label: 'Voir les expériences' },
+    'Expérience': { id: 'Cas d\'étude', label: 'Voir le cas d\'étude' },
+    'Cas d\'étude': { id: 'Formation', label: 'Voir la formation' },
+    'Formation': { id: 'Boîte à Outils', label: 'Voir les outils conçus' },
+    'Boîte à Outils': { id: 'all', label: 'Voir toutes les fiches' },
+  };
 
   const filteredCards = selectedCategory === 'all'
     ? cvData.flashcards
@@ -136,7 +144,7 @@ export default function App() {
             </div>
 
             {/* Flashcard Cards Grid */}
-            <div className="grid grid-cols-1 gap-2.5 pt-0.5">
+            <div id="flashcards-section" className="grid grid-cols-1 gap-2.5 pt-0.5">
               {filteredCards.map((card, idx) => (
                 <FlashcardCard
                   key={card.id}
@@ -147,6 +155,27 @@ export default function App() {
                 />
               ))}
             </div>
+
+            {/* Next Category Transition Button aligned right */}
+            {nextCategoryMap[selectedCategory] && (
+              <div className="flex justify-end pt-1.5 pb-1">
+                <button
+                  onClick={() => {
+                    setSelectedCategory(nextCategoryMap[selectedCategory].id);
+                    const el = document.getElementById('flashcards-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold border transition-all active:scale-95 cursor-pointer shadow-2xs ${
+                    isDark 
+                      ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700 hover:border-[#FF7900]/50' 
+                      : 'bg-white hover:bg-slate-50 text-slate-900 border-slate-200 hover:border-[#FF7900]/50'
+                  }`}
+                >
+                  <span>{nextCategoryMap[selectedCategory].label}</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#FF7900]" />
+                </button>
+              </div>
+            )}
           </div>
         )}
 

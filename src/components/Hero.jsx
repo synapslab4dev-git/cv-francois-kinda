@@ -322,15 +322,6 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
                 }`}>
                   {personal.portfolioTitle}
                 </span>
-                {personal.portfolioBadge && (
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${
-                    isDark 
-                      ? 'bg-[#FF7900]/10 text-[#FF7900] border-[#FF7900]/25' 
-                      : 'bg-[#FF7900]/10 text-[#d96700] border-[#FF7900]/30'
-                  }`}>
-                    {personal.portfolioBadge}
-                  </span>
-                )}
               </div>
               <p className={`text-[11px] truncate mt-0.5 ${
                 isDark ? 'text-slate-400' : 'text-slate-500'

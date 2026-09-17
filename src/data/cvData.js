@@ -3,7 +3,7 @@ export const cvData = {
     fullName: "FRANÇOIS KINDA",
     title: "Responsable Marketing, Croissance & Relation Client",
     subtitle: "Ingénierie Commerciale, CRM Pragmatique & Pilotage de Flottes",
-    targetCandidacy: "Candidature ciblée — Responsable Marketing & Relation Client, CIDS / Dynamique Agro",
+    targetCandidacy: "Candidature ciblée • CIDS & Dynamique Agro",
     photo: "/francois-kinda-square.webp",
     location: "Ouagadougou, Burkina Faso",
     phone: "+226 77 11 99 92",
@@ -15,8 +15,7 @@ export const cvData = {
     degreeShort: "Master MEO 2iE",
     portfolioUrl: "https://drive.google.com/file/d/165SBkmr9GzK5w4Wz0OrXmc95agpIewAD/view?usp=sharing",
     portfolioTitle: "Échantillon de réalisations (PDF)",
-    portfolioSubtitle: "Sélection de cas de marques, packagings & déploiements digitaux",
-    portfolioBadge: "Book 15+ Réalisations"
+    portfolioSubtitle: "Sélection de cas de marques, packagings & déploiements digitaux"
   },
   positioning: {
     title: "Positionnement Professionnel",
@@ -35,39 +34,6 @@ export const cvData = {
     ]
   },
   flashcards: [
-    {
-      id: "synaps-lab",
-      badge: "Poste actuel",
-      category: "Expérience",
-      title: "SYNAPS LAB — Management et Stratégie de Croissance",
-      subtitle: "Consultant en Marketing et Management d'Entreprise | 2023 – Présent | Ouagadougou",
-      icon: "Briefcase",
-      logo: "/logos/synaps-lab.webp",
-      summaryTeaser: "Accompagnement MPME, diagnostic des marges et conception d'outils commerciaux & financiers légers.",
-      overview: "Accompagnement d'entrepreneurs et de MPME dans le passage de l'artisanat informel à la structuration d'un modèle économique viable. Mon approche dépasse la communication traditionnelle : je diagnostique les goulots d'étranglement commerciaux, apporte des recommandations concrètes aux dirigeants pour une meilleure analyse de leurs finances et de leurs marges réelles, modélise les parcours clients sur site et développe des solutions logicielles légères pour la gestion commerciale et financière au quotidien.",
-      evolutionNote: "Synaps LAB est l'aboutissement et l'évolution stratégique de l'atelier GraphiCraft (fondé en 2019), passant de la création graphique pure à l'ingénierie globale de la performance d'entreprise.",
-      highlights: [
-        {
-          title: "Innovation : CRM Léger Semi-Automatisé sur WhatsApp",
-          badge: "Outil Développé",
-          bullets: [
-            "Problématique : Les TPE et MPME locales peinent à fidéliser leurs clients et mesurer leur satisfaction en raison du coût et de la complexité des CRM classiques (abonnements coûteux ou APIs payantes).",
-            "Solution sur-mesure : Modélisation et développement d'une plateforme web agissant comme un CRM pragmatique pour le chargé de clientèle.",
-            "Mécanisme ingénieux : Le système centralise le portefeuille client, calcule les échéances de relance (SAV, feedback qualité, réachat) et génère des messages WhatsApp pré-remplis personnalisés.",
-            "Impact direct : Un simple clic manuel déclenche l'envoi direct sans coût d'infrastructure API. Cadencement régulier des retours, détection immédiate des insatisfactions à coût quasi nul."
-          ]
-        },
-        {
-          title: "Conception d'Outils Commerciaux & Financiers Légers",
-          badge: "Solutions Pragmatiques",
-          bullets: [
-            "Modèle de Facturier Automatisé Excel : Conçu sur-mesure pour une cliente. Saisie minimale (nom du client, date, prestations) générant automatiquement une facture professionnelle personnalisée avec son logo et calculs intégrés, prête à l'export.",
-            "RentaSIM & ViabiTarget : Développement d'outils web de simulation de rentabilité d'investissements et de calcul automatique du seuil d'équilibre par panier moyen pour piloter la trésorerie.",
-            "Objectif : Développer des solutions logicielles légères et accessibles pour outiller et professionnaliser la gestion commerciale et financière au quotidien sans complexité inutile."
-          ]
-        }
-      ]
-    },
     {
       id: "expertises",
       badge: "Compétences clés",
@@ -110,6 +76,39 @@ export const cvData = {
               title: "Rétention & Traitement des Réclamations",
               desc: "Protocoles de résolution des litiges sous 24h et mise en place de boucles de rétroaction qualité produit."
             }
+          ]
+        }
+      ]
+    },
+    {
+      id: "synaps-lab",
+      badge: "Poste actuel",
+      category: "Expérience",
+      title: "SYNAPS LAB — Management et Stratégie de Croissance",
+      subtitle: "Consultant en Marketing et Management d'Entreprise | 2023 – Présent | Ouagadougou",
+      icon: "Briefcase",
+      logo: "/logos/synaps-lab.webp",
+      summaryTeaser: "Accompagnement MPME, diagnostic des marges et conception d'outils commerciaux & financiers légers.",
+      overview: "Accompagnement d'entrepreneurs et de MPME dans le passage de l'artisanat informel à la structuration d'un modèle économique viable. Mon approche dépasse la communication traditionnelle : je diagnostique les goulots d'étranglement commerciaux, apporte des recommandations concrètes aux dirigeants pour une meilleure analyse de leurs finances et de leurs marges réelles, modélise les parcours clients sur site et développe des solutions logicielles légères pour la gestion commerciale et financière au quotidien.",
+      evolutionNote: "Synaps LAB est l'aboutissement et l'évolution stratégique de l'atelier GraphiCraft (fondé en 2019), passant de la création graphique pure à l'ingénierie globale de la performance d'entreprise.",
+      highlights: [
+        {
+          title: "Innovation : CRM Léger Semi-Automatisé sur WhatsApp",
+          badge: "Outil Développé",
+          bullets: [
+            "Problématique : Les TPE et MPME locales peinent à fidéliser leurs clients et mesurer leur satisfaction en raison du coût et de la complexité des CRM classiques (abonnements coûteux ou APIs payantes).",
+            "Solution sur-mesure : Modélisation et développement d'une plateforme web agissant comme un CRM pragmatique pour le chargé de clientèle.",
+            "Mécanisme ingénieux : Le système centralise le portefeuille client, calcule les échéances de relance (SAV, feedback qualité, réachat) et génère des messages WhatsApp pré-remplis personnalisés.",
+            "Impact direct : Un simple clic manuel déclenche l'envoi direct sans coût d'infrastructure API. Cadencement régulier des retours, détection immédiate des insatisfactions à coût quasi nul."
+          ]
+        },
+        {
+          title: "Conception d'Outils Commerciaux & Financiers Légers",
+          badge: "Solutions Pragmatiques",
+          bullets: [
+            "Modèle de Facturier Automatisé Excel : Conçu sur-mesure pour une cliente. Saisie minimale (nom du client, date, prestations) générant automatiquement une facture professionnelle personnalisée avec son logo et calculs intégrés, prête à l'export.",
+            "RentaSIM & ViabiTarget : Développement d'outils web de simulation de rentabilité d'investissements et de calcul automatique du seuil d'équilibre par panier moyen pour piloter la trésorerie.",
+            "Objectif : Développer des solutions logicielles légères et accessibles pour outiller et professionnaliser la gestion commerciale et financière au quotidien sans complexité inutile."
           ]
         }
       ]
@@ -167,6 +166,23 @@ export const cvData = {
       ]
     },
     {
+      id: "future-of-work",
+      badge: "Animation d'Ateliers & Mentorat",
+      category: "Expérience",
+      title: "Future of Work in Africa (Fondation Mastercard)",
+      subtitle: "Animation d'Ateliers & Mentorat Opérationnel | 2024 – 2026",
+      icon: "Users",
+      logo: "/logos/mastercard-foundation.webp",
+      summaryTeaser: "Mentorat individuel de jeunes porteurs de projets, gestion du temps et fixation des prix.",
+      overview: "Animation d'ateliers et mentorat individuel auprès de jeunes porteurs de projets dans le cadre du programme Future of Work in Africa, soutenu par la Fondation Mastercard et l'Arizona State University. Diffusion de méthodologies pragmatiques de gestion du temps et de fixation des prix.",
+      focusCase: {
+        title: "Cas Marquant : Réalignement d'Activité — Projet DEEE Sénégal (TEF Connect)",
+        challenge: "Accompagnement d'une promotrice dispersée sur 6 activités simultanées créant une dilution de ses ressources.",
+        solution: "Application de l'outil d'audit « Grille des 168 Heures ». Diagnostic sans complaisance des goulets d'étranglement.",
+        result: "Abandon des activités déficitaires et concentration exclusive sur une entreprise d'économie circulaire (recyclage des Déchets d'Équipements Électriques et Électroniques - DEEE), aujourd'hui en phase de formalisation juridique avancée."
+      }
+    },
+    {
       id: "univers-des-lauriers",
       badge: "Cas d'étude",
       category: "Cas d'étude",
@@ -198,23 +214,6 @@ export const cvData = {
           details: "Réduction des écarts de caisse, meilleure clarification des rôles de l'équipe, rentabilité assainie et recentrage des activités secondaires au profit de la pâtisserie fine haut de gamme avec le lancement réussi des « Can Cakes »."
         }
       ]
-    },
-    {
-      id: "future-of-work",
-      badge: "Mentorat d'Affaires",
-      category: "Expérience",
-      title: "Future of Work in Africa (Fondation Mastercard)",
-      subtitle: "Mentor d'Affaires & Efficacité Opérationnelle | 2024 – 2026 | BF & Sénégal",
-      icon: "Users",
-      logo: "/logos/mastercard-foundation.webp",
-      summaryTeaser: "Mentorat individuel de jeunes porteurs de projets, gestion du temps et fixation des prix.",
-      overview: "Mentorat individuel auprès de jeunes porteurs de projets dans le cadre du programme Future of Work in Africa, soutenu par la Fondation Mastercard et l'Arizona State University. Diffusion de méthodologies pragmatiques de gestion du temps et de fixation des prix.",
-      focusCase: {
-        title: "Cas Marquant : Réalignement d'Activité — Projet DEEE Sénégal (TEF Connect)",
-        challenge: "Accompagnement d'une promotrice dispersée sur 6 activités simultanées créant une dilution de ses ressources.",
-        solution: "Application de l'outil d'audit « Grille des 168 Heures ». Diagnostic sans complaisance des goulets d'étranglement.",
-        result: "Abandon des activités déficitaires et concentration exclusive sur une entreprise d'économie circulaire (recyclage des Déchets d'Équipements Électriques et Électroniques - DEEE), aujourd'hui en phase de formalisation juridique avancée."
-      }
     },
     {
       id: "formation",
