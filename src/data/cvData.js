@@ -3,7 +3,7 @@ export const cvData = {
     fullName: "FRANÇOIS KINDA",
     title: "Responsable Marketing, Croissance & Relation Client",
     subtitle: "Ingénierie Commerciale, CRM Pragmatique & Pilotage de Flottes",
-    targetCandidacy: "Candidature ciblée • CIDS & Dynamique Agro",
+    targetCandidacy: "Candidature ciblée • CIDS & Dynamic Agro",
     photo: "/francois-kinda-square.webp",
     location: "Ouagadougou, Burkina Faso",
     phone: "+226 77 11 99 92",
@@ -37,8 +37,8 @@ export const cvData = {
     {
       id: "expertises",
       badge: "Compétences clés",
-      category: "Expertise",
-      title: "Domaines d'Expertise Stratégique",
+      category: "Compétences",
+      title: "Compétences Clés Stratégiques",
       subtitle: "Marketing de terrain, CRM pragmatique & structuration commerciale",
       icon: "Target",
       logo: null,
@@ -216,14 +216,14 @@ export const cvData = {
       ]
     },
     {
-      id: "formation",
-      badge: "Diplômes Supérieurs",
+      id: "formation-master",
+      badge: "Master MEO (2024–2026)",
       category: "Formation",
-      title: "Formations Académiques — Institut 2iE",
-      subtitle: "Master MEO & Bachelor Gestion des Infrastructures et Services | Institut 2iE",
+      title: "Master Management des Entreprises & Organisations",
+      subtitle: "Institut 2iE • Innovation & Développement des Sociétés | 2024 – 2026",
       icon: "GraduationCap",
       logo: "/logos/logo-2ie.webp",
-      summaryTeaser: "Master MEO & Bachelor Gestion des infrastructures : planification, calculs de coûts, reporting et stratégie.",
+      summaryTeaser: "Diagnostic d'entreprise approfondi, marketing stratégique marchés émergents, chaînes de valeur amont-aval.",
       programs: [
         {
           institution: "Institut International d'Ingénierie de l'Eau et de l'Environnement (2iE), Ouagadougou",
@@ -235,7 +235,19 @@ export const cvData = {
             "Modélisation et optimisation des chaînes de valeur amont-aval",
             "Management de la qualité totale et conduite du changement opérationnel"
           ]
-        },
+        }
+      ]
+    },
+    {
+      id: "formation-bachelor",
+      badge: "Bachelor GIS (2022–2024)",
+      category: "Formation",
+      title: "Bachelor Gestion des Infrastructures & Services",
+      subtitle: "Institut 2iE • Planification, Ingénierie des Coûts & Stratégie | 2022 – 2024",
+      icon: "GraduationCap",
+      logo: "/logos/logo-2ie.webp",
+      summaryTeaser: "Planification opérationnelle, calculs de déboursés secs & prix de revient, reporting analytique d'activités.",
+      programs: [
         {
           institution: "Institut International d'Ingénierie de l'Eau et de l'Environnement (2iE), Ouagadougou",
           degree: "Bachelor en Gestion des Infrastructures et Services",

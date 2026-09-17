@@ -96,9 +96,9 @@ export default function Hero({ personal, positioning, viewMode, setViewMode, onS
           : 'bg-white border-slate-200/90 shadow-xs'
       }`}>
         
-        {/* Targeted Candidacy Badge for CIDS / Dynamique Agro */}
+        {/* Targeted Candidacy Badge for CIDS / Dynamic Agro */}
         {personal.targetCandidacy && (
-          <div className="mb-3.5">
+          <div className="mb-3.5 flex justify-center sm:justify-start">
             <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-xl text-[11px] sm:text-xs font-semibold border ${
               isDark 
                 ? 'bg-[#FF7900]/10 text-[#FF7900] border-[#FF7900]/30' 

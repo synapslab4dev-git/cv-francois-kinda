@@ -5,12 +5,12 @@ import FlashcardCard from './components/FlashcardCard';
 import FlashcardModal from './components/FlashcardModal';
 import FullCvView from './components/FullCvView';
 import QuickActionBar from './components/QuickActionBar';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function App() {
   const [viewMode, setViewMode] = useState('flashcards'); // 'flashcards' | 'full'
   const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('Expertise');
+  const [selectedCategory, setSelectedCategory] = useState('Compétences');
   const [toastMessage, setToastMessage] = useState(null);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -39,7 +39,7 @@ export default function App() {
   };
 
   const categories = [
-    { id: 'Expertise', label: 'Expertises' },
+    { id: 'Compétences', label: 'Compétences' },
     { id: 'Expérience', label: 'Expériences' },
     { id: 'Cas d\'étude', label: 'Cas d\'étude' },
     { id: 'Formation', label: 'Formation' },
@@ -47,12 +47,31 @@ export default function App() {
     { id: 'all', label: 'Toutes les fiches' },
   ];
 
-  const nextCategoryMap = {
-    'Expertise': { id: 'Expérience', label: 'Voir les expériences' },
-    'Expérience': { id: 'Cas d\'étude', label: 'Voir le cas d\'étude' },
-    'Cas d\'étude': { id: 'Formation', label: 'Voir la formation' },
-    'Formation': { id: 'Boîte à Outils', label: 'Voir les outils conçus' },
-    'Boîte à Outils': { id: 'all', label: 'Voir toutes les fiches' },
+  const navigationMap = {
+    'Compétences': {
+      prev: null,
+      next: { id: 'Expérience', label: 'Voir les expériences' },
+    },
+    'Expérience': {
+      prev: { id: 'Compétences', label: 'Compétences' },
+      next: { id: 'Cas d\'étude', label: 'Voir le cas d\'étude' },
+    },
+    'Cas d\'étude': {
+      prev: { id: 'Expérience', label: 'Expériences' },
+      next: { id: 'Formation', label: 'Voir la formation' },
+    },
+    'Formation': {
+      prev: { id: 'Cas d\'étude', label: 'Cas d\'étude' },
+      next: { id: 'Boîte à Outils', label: 'Voir les outils conçus' },
+    },
+    'Boîte à Outils': {
+      prev: { id: 'Formation', label: 'Formation' },
+      next: { id: 'all', label: 'Voir toutes les fiches' },
+    },
+    'all': {
+      prev: { id: 'Boîte à Outils', label: 'Outils' },
+      next: null,
+    },
   };
 
   const filteredCards = selectedCategory === 'all'
@@ -156,24 +175,44 @@ export default function App() {
               ))}
             </div>
 
-            {/* Next Category Transition Button aligned right */}
-            {nextCategoryMap[selectedCategory] && (
-              <div className="flex justify-end pt-1.5 pb-1">
-                <button
-                  onClick={() => {
-                    setSelectedCategory(nextCategoryMap[selectedCategory].id);
-                    const el = document.getElementById('flashcards-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold border transition-all active:scale-95 cursor-pointer shadow-2xs ${
-                    isDark 
-                      ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700 hover:border-[#FF7900]/50' 
-                      : 'bg-white hover:bg-slate-50 text-slate-900 border-slate-200 hover:border-[#FF7900]/50'
-                  }`}
-                >
-                  <span>{nextCategoryMap[selectedCategory].label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#FF7900]" />
-                </button>
+            {/* Category Stepper Navigation (Précédent / Suivant) */}
+            {navigationMap[selectedCategory] && (
+              <div className="flex items-center justify-between gap-2 pt-2 pb-1">
+                {navigationMap[selectedCategory].prev ? (
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(navigationMap[selectedCategory].prev.id);
+                      const el = document.getElementById('flashcards-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all active:scale-95 cursor-pointer shadow-2xs ${
+                      isDark 
+                        ? 'bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border-slate-700 hover:border-slate-600' 
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'
+                    }`}
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5 text-slate-400" />
+                    <span>{navigationMap[selectedCategory].prev.label}</span>
+                  </button>
+                ) : <div />}
+
+                {navigationMap[selectedCategory].next ? (
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(navigationMap[selectedCategory].next.id);
+                      const el = document.getElementById('flashcards-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all active:scale-95 cursor-pointer shadow-2xs ${
+                      isDark 
+                        ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700 hover:border-[#FF7900]/50' 
+                        : 'bg-white hover:bg-slate-50 text-slate-900 border-slate-200 hover:border-[#FF7900]/50'
+                    }`}
+                  >
+                    <span>{navigationMap[selectedCategory].next.label}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#FF7900]" />
+                  </button>
+                ) : <div />}
               </div>
             )}
           </div>
