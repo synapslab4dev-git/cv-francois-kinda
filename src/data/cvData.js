@@ -9,7 +9,7 @@ export const cvData = {
     phone: "+226 77 11 99 92",
     email: "synaps.lab4dev@gmail.com",
     linkedinUsername: "in/françois-kinda",
-    linkedinUrl: "https://www.linkedin.com/in/françois-kinda-water-and-sustainable-development",
+    linkedinUrl: "https://www.linkedin.com/in/fran%C3%A7ois-kinda-water-and-sustainable-development",
     whatsappUrl: "https://wa.me/22677119992?text=Bonjour%20Fran%C3%A7ois%2C%20j'ai%20consult%C3%A9%20votre%20CV%20mobile%20et%20je%20souhaite%20%C3%A9changer%20avec%20vous.",
     experienceYears: "4 ans d'impact stratégique",
     degreeShort: "Master MEO 2iE",
